@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+/* Main Heading */
+.heading {
+  margin: 20px auto;
+  color: #4c1d95;
+  font-size: 35px;
+  text-align: center;
+  font-weight: 900;
+}
+
+/* Login Form */
+.form {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 2px solid #5b2dbd;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Name Input */
+.name {
+  @apply border-2 border-purple-200 rounded-md p-3;
+  font-weight: 600;
+  color: #4c1d95;
+}
+
+/* Email Input */
+.email {
+  @apply border-2 border-purple-200 rounded-md p-3;
+  font-weight: 600;
+  color: #4c1d95;
+}
+
+/* Password Input */
+.password {
+  @apply border-2 border-purple-200 rounded-md p-3;
+  font-weight: 600;
+  color: #4c1d95;
+}
+
+/* Button */
+.button {
+  @apply rounded-md p-3;
+  background-color: #5b2dbd;
+  color: white;
+  font-weight: 700;
+  border: none;
+}
+
+.button:hover {
+  background-color: #45209a;
+}
+
+/* Main Background */
+body {
+  background-color: #f5f1ff;
+}
+
+/* Login Card */
+.login-box {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px;
+  background-color: white;
+  border: 2px solid #e4d7ff;
+  border-radius: 12px;
+}
+
+/* Paragraph */
+.text {
+  color: #6b7280;
+  text-align: center;
+}
