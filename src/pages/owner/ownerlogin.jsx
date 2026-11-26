@@ -1,29 +1,44 @@
-import { useState } from 'react'
-function Login() {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const formsubmit=(e)=>
-  {
-    e.preventDefault()
-    console.log(name,email,password)
+import { registerschema } from "../../components/formschema/registerschema";
+import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+function OwnerLogin() {
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm({
+    resolver: zodResolver(registerschema)
+  });
+  function onSubmit2(data) {
+    console.log(data);
+    alert("Owner Login Success");
+    navigate("/ownerdashboard", { state: data });
   }
   return (
-    <div>
-      <h1>Login Page</h1>
-      <form onSubmit={formsubmit}>
-        <label>Name:</label>
-        <input type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} required/>
-        <br /><br />
-        <label>Email:</label>
-        <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <br /><br />
-        <label>Password:</label>
-        <input type="password" placeholder="Enter Password" value={password} onChange={(e) => setPassword(e.target.value)}required />
-        <br /><br />
-        <button type="submit">Submit</button>
+    <>
+      <h1 className="heading">Owner Login Form</h1>
+      <form className="form" onSubmit={handleSubmit(onSubmit2)}>
+        <label>USERNAME :</label>
+        <input type="text" className="name" placeholder="Enter your Username here"  {...register("username")} />
+        <p>{errors.username?.message}</p>
+        <br />
+        <label>EMAIL :</label>
+        <input type="email" className="email"  placeholder="Enter your Email here" {...register("email")} />
+        <p>{errors.email?.message}</p>
+        <br />
+        <label>PASSWORD :</label>
+        <input type="password" className="password" placeholder="Enter your Password here" {...register("password")} />
+        <p>{errors.password?.message}</p>
+        <br />
+        <label>AGE :</label>
+        <input type="number" className="age" placeholder="Enter your Age here" {...register("age")}  />
+        <p>{errors.age?.message}</p>
+        <br />
+        <button type="submit" className="button"> Submit </button>
       </form>
-    </div>
-  )
+    </>
+  );
 }
-export default Login
+export default OwnerLogin;

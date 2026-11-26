@@ -1,15 +1,21 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import RenterLogin from './pages/renter/renterlogin'
-
+import LandingPage from './pages/landingpage.jsx'
+import RenterLogin from './pages/renter/renterlogin.jsx'
+import OwnerLogin from './pages/owner/ownerlogin.jsx'
+import OwnerDashboard from './pages/owner/ownerdashboard.jsx'
+import RenterDashboard from './pages/renter/renterdashboard.jsx'
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<RenterLogin />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/renterlogin" element={<RenterLogin />} />
+        <Route path="/ownerlogin" element={<OwnerLogin />} />
+        <Route path="/renterdashboard" element={<RenterDashboard />} />
+        <Route path="/ownerdashboard" element={<OwnerDashboard />} />
       </Routes>
     </BrowserRouter>
   )
 }
-
 export default App
