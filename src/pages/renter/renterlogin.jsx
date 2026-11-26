@@ -9,11 +9,11 @@ function RenterLogin() {
     console.log(name, email, password)
   }
   return (
-    <div className="login-box">
+    <div className="login box">
       <h1 className="heading">Renter Login</h1>
       <form onSubmit={formsubmit} className="form">
-        <label>Name:</label>
-        <input type="text" placeholder="Enter Name" value={name} onChange={(e) => setName(e.target.value)} className="name" required/>
+        <label>Name::</label>
+        <input type="text" placeholder="Enter your Name" value={name} onChange={(e) => setName(e.target.value)} className="name" required/>
         <label>Email:</label>
         <input type="email" placeholder="Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} className="email" required />
         <label>Password:</label>
