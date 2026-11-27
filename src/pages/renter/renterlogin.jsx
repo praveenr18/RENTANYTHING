@@ -37,7 +37,7 @@ function RenterLogin() {
         />
         <p>{errors.password?.message}</p>
         <br />
-        <label>AGE :</label>
+        <label>AGE ::</label>
         <input type="number" className="age" placeholder="Enter your Age here" {...register("age")} />
         <p>{errors.age?.message}</p>
         <br />
