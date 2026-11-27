@@ -15,9 +15,15 @@ function LandingPage() {
           <button className="button" onClick={() => navigate('/renterlogin')} > Continue as Renter </button>
         </div>
         <div>
+          <button className="button" onClick={() => navigate('/registerrenter')} > Register here </button>
+        </div>
+        <div>
           <h2>Owner Login</h2>
           <p>List your products and earn by renting.</p>
           <button className="button" onClick={() => navigate('/ownerlogin')} >  Continue as Owner </button>
+        </div>
+        <div>
+          <button className="button" onClick={() => navigate('/registerowner')} > Register here </button>
         </div>
       </div>
     </div>

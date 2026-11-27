@@ -1,44 +1,49 @@
-import { registerschema } from "../../components/formschema/registerschema";
-import { useNavigate } from "react-router-dom";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+
+import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 function OwnerLogin() {
-  const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({
-    resolver: zodResolver(registerschema)
-  });
-  function onSubmit2(data) {
-    console.log(data);
-    alert("Owner Login Success");
-    navigate("/ownerdashboard", { state: data });
+  const location=useLocation();
+  const regdata=location.state;
+  const navigate=useNavigate();
+   const [logindata, setlogindata] = useState({
+    email: "",
+    password: "",
+    username: "",
+    age: "",
+  })
+  function handlechange(e) {
+    e.preventDefault();
+    setlogindata({
+      ...logindata,
+      [e.target.name]: e.target.value
+    })
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(regdata.username===logindata.username && regdata.email===logindata.email && regdata.password===logindata.password && regdata.age===logindata.age){
+        alert("Login Successful")
+        navigate("/ownerdashboard",{state:logindata})
+       }
+       else
+       {
+        console.log("Invalid credentials")
+       }
   }
   return (
     <>
-      <h1 className="heading">Owner Login Form</h1>
-      <form className="form" onSubmit={handleSubmit(onSubmit2)}>
-        <label>USERNAME :</label>
-        <input type="text" className="name" placeholder="Enter your Username here"  {...register("username")} />
-        <p>{errors.username?.message}</p>
+   <h1 className="heading">Login Form</h1>
+       <form className="form" onSubmit={handleSubmit}  >
+        USERNAME :{" "}
+        <input type="text" className="name" required placeholder="Enter your UserName here" name="username" value={logindata.username} onChange={handlechange}/>
         <br />
-        <label>EMAIL :</label>
-        <input type="email" className="email"  placeholder="Enter your Email here" {...register("email")} />
-        <p>{errors.email?.message}</p>
+        EMAIL :{" "} <input type="email" className="email" required placeholder="Enter your Email here" name="email" value={logindata.email} onChange={handlechange} />
         <br />
-        <label>PASSWORD :</label>
-        <input type="password" className="password" placeholder="Enter your Password here" {...register("password")} />
-        <p>{errors.password?.message}</p>
+        PASSWORD :{" "} <input type="password" className="password"  required  placeholder="Enter your Password here"  name="password"  value={logindata.password}  onChange={handlechange}/>
         <br />
-        <label>AGE :</label>
-        <input type="number" className="age" placeholder="Enter your Age here" {...register("age")}  />
-        <p>{errors.age?.message}</p>
-        <br />
-        <button type="submit" className="button"> Submit </button>
+        AGE :{" "}<input type ="number" className="age" required placeholder="Enter your Age" name="age" value={logindata.age} onChange={handlechange}/>
+         <button type="SUBMIT" className='button'>Submit</button>
       </form>
-    </>
-  );
+        </>
+  )
 }
 export default OwnerLogin;
