@@ -31,7 +31,7 @@ function OwnerLogin() {
   }
   return (
     <>
-   <h1 className="heading">Login Form</h1>
+   <h1 className="heading">Loginn Form</h1>
        <form className="form" onSubmit={handleSubmit}  >
         USERNAME :{" "}
         <input type="text" className="name" required placeholder="Enter your UserName here" name="username" value={logindata.username} onChange={handlechange}/>
